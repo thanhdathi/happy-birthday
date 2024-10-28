@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Chúc Mừng</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="audio.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang 2</title>
+    
+    <style>
+        body {
+            margin: 10;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://as1.ftcdn.net/v2/jpg/01/88/60/60/1000_F_188606037_TmePLAgAO5zNpf4HMojSzXqfHkI1Ivtb.jpg'); /* Thay bằng đường dẫn hình ảnh */
+            background-size: cover;
+            color: rgb(0, 0, 0);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            position: relative;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.4); /* Màu nền bán trong suốt */
+            padding: 1px;
+            border-radius: 20px;
+            width: 600px; /* Độ rộng của thiệp */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        h2 {
+            margin: 10px 0;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        button {
+          padding: 20px 30px; /* Kích thước nút */
+          font-size: 16px; /* Kích thước chữ trong nút */
+          color: white; /* Màu chữ trong nút */
+          background-color: #337aa3; /* Màu nền của nút */
+          border: none; /* Xóa viền nút */
+          border-radius: 5px; /* Bo tròn góc nút */
+          cursor: pointer; /* Hiển thị con trỏ chuột khi di chuột qua nút */
+          transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+          position: absolute;
+          bottom: 50px;
+          right: 100;
+        } 
+    </style>
+</head>
+<body>
+    <audio id="myAudio" loop>
+        <source src="D:\dowload\happy-birthday-to-you-bossa-nova-style-arrangement-21399.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ audio.
+    </audio>
+
+    <button onclick="toggleMusic()">Phát / Tạm dừng nhạc</button>
+    
+    
+    <a href="video.html"><button>Tiếp tục</button></a>
+    
+    <div class="card">
+        <h1>Happy Birthday!</h1>
+        <h2 id="date"></h2>
+        <p class="message">tao Lê Thành Đạt mafia internet ông trùm kéo view số 1 Việt Nam, chúc mày tuổi mới thật nhiều sức khỏe, tràn đầy sức sống, hạnh phúc và thành công,"8386" m nhé, LUK mãi đỉnh mãi đỉnh :))</p>
+    </div>
+
+    <script>
+        const audio = document.getElementById("myAudio");
+
+        function toggleMusic() {
+          if (audio.paused) {
+            audio.play();
+            localStorage.setItem("isPlaying", "true");
+       } else {
+           audio.pause();
+           localStorage.setItem("isPlaying", "false");
+       } 
+   }
+
+// Kiểm tra trạng thái phát từ LocalStorage
+if (localStorage.getItem("isPlaying") === "true") {
+    audio.play();
+}
+        // Hiển thị ngày tháng hiện tại
+        function displayCurrentDate() {
+            const dateElement = document.getElementById("date");
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = now.toLocaleDateString('vi-VN', options);
+        }
+        
+        displayCurrentDate(); // Gọi hàm để hiển thị ngày tháng
+    </script>
+</body>
+</html>
